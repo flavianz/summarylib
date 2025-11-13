@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import React from "react";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <div className={"flex flex-row justify-between"}>
+          <p className="font-serif">SummaryLib</p><div><p>Search</p></div><div><Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/></div></div>
         {children}
       </body>
     </html>
