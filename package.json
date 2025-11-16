@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "summarize": "tsx -r dotenv/config -r tsconfig-paths/register scripts/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
@@ -22,6 +23,8 @@
     "dotenv": "^17.2.3",
     "prisma": "^6.19.0",
     "tailwindcss": "^4",
+    "tsx": "^4.19.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.24.1"
