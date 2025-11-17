@@ -11,7 +11,7 @@ export async function GET(request: Request) {
         SELECT title, author, summary, "bookLanguage", "summaryLanguage"
         FROM "Book"
         WHERE title % ${search}
-           OR title ILIKE '%${search}%'
+           OR author % ${search}
         ORDER BY similarity(title, ${search}) DESC LIMIT 10;
     `;
     return NextResponse.json(results);
