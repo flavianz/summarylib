@@ -16,6 +16,7 @@ datasource db {
 
 model Book {
   id         Int      @id @default(autoincrement())
+  book_id    String   @default(uuid()) @db.Uuid
   title      String
   uploadedAt DateTime @default(now()) @db.Timestamp()
   summary    String
@@ -24,13 +25,16 @@ model Book {
   language   String   @db.VarChar(2)
 
   chapters Chapter[]
+
+  @@unique([book_id, language])
 }
 
 model Chapter {
-  id      Int    @id @default(autoincrement())
-  book_id Int
-  number  Int
-  name    String
-  summary String @default("")
-  book    Book   @relation(fields: [book_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id       Int    @id @default(autoincrement())
+  book_id  String @db.Uuid
+  number   Int
+  name     String
+  summary  String @default("")
+  language String @db.VarChar(2)
+  book     Book   @relation(fields: [book_id, language], references: [book_id, language], onDelete: NoAction, onUpdate: NoAction)
 }
