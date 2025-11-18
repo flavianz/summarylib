@@ -28,7 +28,7 @@ const ai = new GoogleGenAI({apiKey: process.env.GENAI_API_KEY});
 
 const chapterSummarySchema = z.object({
     number: z.number().describe("The number of the chapter (starting at 1)."),
-    title: z.string().describe("The title of the chapter. keep it short and concise."),
+    name: z.string().describe("The name of the chapter. keep it short and concise."),
     summary: z.string().describe("A summary of the chapter. More detailed than the complete summary")
 });
 
