@@ -28,16 +28,16 @@ const ai = new GoogleGenAI({apiKey: process.env.GENAI_API_KEY});
 
 const chapterSummarySchema = z.object({
     number: z.number().describe("The number of the chapter (starting at 1)."),
-    name: z.string().describe("The name of the chapter. keep it short and concise."),
-    summary: z.string().describe("A summary of the chapter. More detailed than the complete summary")
+    name: z.string().describe("The name of the chapter."),
+    summary: z.string().describe("A detailed summary of the chapter.")
 });
 
 const bookSummarySchema = z.object({
     title: z.string().describe("The title of the book."),
     author: z.string().describe("The author of the book."),
-    summary: z.string().describe("The summary should be about 500 words (+-250 words, depending on the length and content of the book). It should not contain any analysis or other thoughts, simply the plot."),
+    summary: z.string().describe("The summary should be about 500 - 750 words, depending on the length and content of the book. Insert line breaks where they fit to make it more readable. It should not contain any analysis or other thoughts, simply the plot."),
     analysis: z.string().describe("Give a brief analysis of the themes and other literary analysis"),
-    chapters: z.array(chapterSummarySchema).describe("The chapters of the book.")
+    chapters: z.array(chapterSummarySchema).describe("The chapters of the book. There should not be more than 50 items. If there are more than 50, start summarizing them in small batches.")
 });
 
 export const bookSchema = z.object({

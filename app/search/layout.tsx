@@ -8,11 +8,13 @@ export default function SearchLayout({
 }>) {
     return (
         <div>
-            <SearchInput/>
-            <div className={"flex flex-row"}>
-                <div className={"flex-1 bg-amber-100"}>Filter</div>
+            <div className="flex flex-row justify-center">
+                <div className="w-[40%] "><SearchInput/></div>
+            </div>
+            <div className={"flex flex-row  mt-10"}>
+                <div className={"flex-1"}>Filter</div>
                 <div className={"flex-2"}>{children}</div>
-                <div className={"flex-1 bg-amber-100"}>Ads</div>
+                <div className={"flex-1 "}>Ads</div>
             </div>
         </div>
     );

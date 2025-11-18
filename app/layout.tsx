@@ -34,7 +34,7 @@ export default function RootLayout({
             <div><p>Search</p></div>
             <div><Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/></div>
         </div>
-        <div className="flex-1">{children}</div>
+        <div className="flex">{children}</div>
         </body>
         </html>
     );

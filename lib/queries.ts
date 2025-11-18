@@ -10,6 +10,6 @@ export async function getSearchResults(query: string): Promise<SearchResults> {
     `;
 }
 
-export async function getBookById(id: number) {
+export async function getSummaryById(id: number) {
     return prisma.book.findUnique({where: {id: id}, include: {chapters: true}});
 }

@@ -5,7 +5,7 @@ import {BookSummary} from "@/scripts/summary";
 
 const prisma = new PrismaClient()
 
-let ints = [17362];
+let ints = [1513];
 
 async function main() {
     const books = await fetchGutenbergBooks(ints);
