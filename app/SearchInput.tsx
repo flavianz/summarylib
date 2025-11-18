@@ -1,10 +1,11 @@
 "use client"
 
-import {useRouter} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import {useState} from "react";
 
-export default function SearchInput() {
-    const [value, setValue] = useState("");
+export default function SearchInput({}) {
+    const params = useParams();
+    const [value, setValue] = useState(params.search ?? "");
     const router = useRouter();
     return <div
         className="border border-gray-300 shadow-[var(--secondary)] rounded-4xl flex justify-center pl-8 pt-2 pr-2 pb-2">
