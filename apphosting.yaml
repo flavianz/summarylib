@@ -19,4 +19,3 @@ env:
     #   secret: mySecretRef
 scripts:
   buildCommand: prisma generate && next build
-  runCommand: node dist/index.js
