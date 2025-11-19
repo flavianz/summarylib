@@ -2,13 +2,15 @@ import {fetchGutenbergBooks} from "@/scripts/gutenberg";
 import {PrismaClient} from "@/generated/prisma/client";
 import {v4 as uuidv4} from 'uuid';
 import {BookSummary} from "@/scripts/summary";
+import {getFileBook} from "@/scripts/fromFile";
 
 const prisma = new PrismaClient()
 
 let ints = [1513];
 
 async function main() {
-    const books = await fetchGutenbergBooks(ints);
+    //const books = await fetchGutenbergBooks(ints);
+    const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
 
     for (const b of books) {
         const bookId = uuidv4();
