@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "summarize": "tsx -r dotenv/config -r tsconfig-paths/register scripts/index.ts"
   },
