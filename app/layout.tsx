@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Image from "next/image";
+import AdSense from "@/components/AdSense";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+        <head><AdSense pId={"1921734779513180"}/></head>
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
         >

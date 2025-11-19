@@ -5,6 +5,7 @@ import Image from "next/image";
 import summary from "@/public/book.svg";
 import analysis from "@/public/analysis.svg";
 import chapters from "@/public/chapters.svg";
+import AdBanner from "@/components/AdBanner";
 
 const TabContext = createContext("");
 
@@ -35,7 +36,9 @@ export default function SummaryLayout({children}: { children: React.ReactNode })
             <div className={"flex-2"}><TabContext.Provider value={activeTab}>
                 {children}
             </TabContext.Provider></div>
-            <div className={"flex-1"}>Ads</div>
+            <div className={"flex-1"}>
+                <AdBanner dataAdSlot={"ca-pub-1921734779513180"} dataAdFormat={"auto"} dataFullWidthResponsive={true}/>
+            </div>
         </div>
     </div>
 }
