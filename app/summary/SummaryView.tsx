@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import summaryIcon from "@/public/book.svg";
 import analysisIcon from "@/public/analysis.svg";
 import chaptersIcon from "@/public/chapters.svg";
+import shareIcon from "@/public/share.svg";
 import {useRouter} from "next/navigation";
 
 export default function SummaryView({summary}: {
@@ -29,6 +30,7 @@ export default function SummaryView({summary}: {
     })
 }) {
     const [activeTab, setActiveTab] = useState<string>("summary");
+    
     const router = useRouter();
 
     function getView(tab: string) {
@@ -53,7 +55,7 @@ export default function SummaryView({summary}: {
                     return <button key={key} onClick={() => setActiveTab(tab)}
                                    className={"hover:cursor-pointer p-4 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (tab === activeTab ? " bg-[#2b78491A]" : "")}>
                         <div className="flex-1 flex flex-row justify-start">
-                            <Image className="stroke-black" src={icon} alt={"icon"} width={24} height={24}/>
+                            <Image src={icon} alt={"icon"} width={24} height={24}/>
                             <p className="ml-4">{tabName}</p>
                         </div>
                     </button>
@@ -71,13 +73,27 @@ export default function SummaryView({summary}: {
                 })
             }
         </div>
-        <div className="flex-2"><h1 className="font-bold text-4xl">{summary.title}</h1>
-            <div className="flex flex-row">
-                <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
-                <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
+        <div className="flex-2">
+            <div className="flex flex-row justify-between items-center">
+                <div><h1 className="font-bold text-4xl">{summary.title}</h1>
+                    <div className="flex flex-row">
+                        <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
+                        <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
+                    </div>
+                </div>
+                <div
+                    className="hover:cursor-pointer hover:bg-[#2b78491A] rounded-3xl place-items-center w-[36px] h-[36px] flex justify-center items-center"
+                    onClick={() => navigator.clipboard.writeText(window.location.href)}>
+                    <Image
+                        src={shareIcon} alt={"share"}
+                        width={22}
+                        height={22}
+                    />
+                </div>
             </div>
             <div className="h-4"></div>
-            {getView(activeTab)}</div>
+            {getView(activeTab)}
+        </div>
     </div>
 }
 
