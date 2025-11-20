@@ -9,7 +9,7 @@ import shareIcon from "@/public/share.svg";
 import {useRouter} from "next/navigation";
 
 export default function SummaryView({summary}: {
-    summary: ({} & {
+    summary: ({
         id: number,
         book_id: string,
         title: string,
@@ -30,7 +30,7 @@ export default function SummaryView({summary}: {
     })
 }) {
     const [activeTab, setActiveTab] = useState<string>("summary");
-    
+
     const router = useRouter();
 
     function getView(tab: string) {
