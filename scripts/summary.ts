@@ -2,6 +2,8 @@ import {GoogleGenAI} from "@google/genai";
 import {z} from "zod";
 import {zodToJsonSchema} from "zod-to-json-schema";
 import "dotenv/config";
+import {v4 as uuidv4} from 'uuid';
+import * as fs from "node:fs";
 
 export interface BookSummary {
     title: string;
@@ -17,7 +19,7 @@ interface ChapterSummary {
     summary: string;
 }
 
-interface Book {
+export interface Book {
     de: BookSummary;
     en: BookSummary;
     fr: BookSummary;
@@ -59,6 +61,13 @@ export async function generateSummary(content: string) {
             responseJsonSchema: zodToJsonSchema(bookSchema),
         },
     });
-    console.log(response.text);
-    return JSON.parse(response.text ?? "{}") as Book;
+    const book: Book = JSON.parse(response.text ?? "{}") as Book;
+    const uuid = uuidv4();
+    try {
+        fs.writeFileSync(`./book_backups/${book.en.title}-${uuid}.json`, content);
+
+    } catch (err) {
+        console.error(err);
+    }
+    return book;
 }

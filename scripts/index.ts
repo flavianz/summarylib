@@ -3,6 +3,7 @@ import {PrismaClient} from "@/generated/prisma/client";
 import {v4 as uuidv4} from 'uuid';
 import {BookSummary} from "@/scripts/summary";
 import {getFileBook} from "@/scripts/fromFile";
+import {getJsonBackupBook} from "@/scripts/fromJsonBackup";
 
 const prisma = new PrismaClient()
 
@@ -10,7 +11,8 @@ let ints = [1513];
 
 async function main() {
     //const books = await fetchGutenbergBooks(ints);
-    const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
+    //const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
+    const books = getJsonBackupBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
 
     for (const b of books) {
         const bookId = uuidv4();
@@ -34,12 +36,14 @@ async function main() {
             let book = await prisma.book.findFirst({
                 where: {title: scalarData.title, author: scalarData.author, summaryLanguage: langBook[0]}
             });
-            if (!book) {
-                console.log(`Creating book: ${scalarData.title} by ${scalarData.author} in language ${scalarData.summaryLanguage}`);
-                book = await prisma.book.create({data: scalarData});
-            } else {
+            if (book) {
                 console.log("Book already exists, skipping: ", scalarData.title, " by ", scalarData.author, " in language: ", langBook[0],)
+                continue;
             }
+
+            console.log(`Creating book: ${scalarData.title} by ${scalarData.author} in language ${scalarData.summaryLanguage}`);
+            book = await prisma.book.create({data: scalarData});
+
 
             // insert chapters, linking to the book
             const chapters = bookSummary.chapters;
