@@ -1,14 +1,20 @@
 "use client"
 
 import {useRouter} from "next/navigation";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export default function SearchInput() {
     const [value, setValue] = useState("");
     const router = useRouter();
 
+    function handleSubmit(e?: React.FormEvent<HTMLFormElement>) {
+        if(e) {
+            e.preventDefault();
+        }
+        router.push(`/search?search=${value}`);
+    }
 
-    return <div
+    return <form onSubmit={handleSubmit}><div
         className="border border-[var(--secondary)] shadow-[var(--secondary)] rounded-4xl flex justify-center pl-8 pt-2 pr-2 pb-2">
         <input type="text"
                className="focus:outline-none focus:ring-0 border-transparent flex-1" value={value}
@@ -16,8 +22,8 @@ export default function SearchInput() {
                placeholder="Search for books or authors..."
         />
         <button className="bg-[var(--primary)] pl-5 pr-5 pt-2 pb-2 rounded-4xl hover:cursor-pointer"
-                onClick={() => router.push(`/search?search=${value}`)}>
+                onClick={() => handleSubmit()}>
             Search
         </button>
-    </div>
+    </div></form>
 }
