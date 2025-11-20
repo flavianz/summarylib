@@ -13,3 +13,7 @@ export async function getSearchResults(query: string): Promise<SearchResults> {
 export async function getSummaryById(id: number) {
     return prisma.book.findUnique({where: {id: id}, include: {chapters: true}});
 }
+
+export async function getSummaryByUuidAndLang(uuid: string, lang: string) {
+    return prisma.book.findFirst({where: {book_id: uuid, summaryLanguage: lang}, include: {chapters: true}});
+}

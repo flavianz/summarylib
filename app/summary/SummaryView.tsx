@@ -1,6 +1,11 @@
 "use client"
 
-import {useTabContext} from "@/app/summary/layout";
+import Image from "next/image";
+import React, {useState} from "react";
+import summaryIcon from "@/public/book.svg";
+import analysisIcon from "@/public/analysis.svg";
+import chaptersIcon from "@/public/chapters.svg";
+import {useRouter} from "next/navigation";
 
 export default function SummaryView({summary}: {
     summary: ({} & {
@@ -23,8 +28,8 @@ export default function SummaryView({summary}: {
         }[]
     })
 }) {
-    const tab = useTabContext();
-
+    const [activeTab, setActiveTab] = useState<string>("summary");
+    const router = useRouter();
 
     function getView(tab: string) {
         if (tab === "chapters") {
@@ -41,15 +46,39 @@ export default function SummaryView({summary}: {
         }
     }
 
-    return <>
-        <h1 className="font-bold text-4xl">{summary.title}</h1>
-        <div className="flex flex-row">
-            <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
-            <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
+    return <div className="flex flex-row">
+        <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5"}>
+            {
+                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]].map(([tab, tabName, icon], key) => {
+                    return <button key={key} onClick={() => setActiveTab(tab)}
+                                   className={"hover:cursor-pointer p-4 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (tab === activeTab ? " bg-[#2b78491A]" : "")}>
+                        <div className="flex-1 flex flex-row justify-start">
+                            <Image className="stroke-black" src={icon} alt={"icon"} width={24} height={24}/>
+                            <p className="ml-4">{tabName}</p>
+                        </div>
+                    </button>
+                })
+            }
+            <h4 className="font-bold text-lg ml-8 mr-5 mt-10 mb-5">Available Languages</h4>
+            {
+                ["en", "de", "fr"].map((langCode, key) => {
+                    return <button key={key} onClick={() => router.push(`/summary?uuid=${summary.book_id};${langCode}`)}
+                                   className={"hover:cursor-pointer p-2 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (summary.summaryLanguage === langCode ? " bg-[#2b78491A]" : "")}>
+                        <div className="flex-1 flex flex-row justify-start">
+                            <p className="ml-4">{getLanguageFromCode(langCode)}</p>
+                        </div>
+                    </button>
+                })
+            }
         </div>
-        <div className="h-4"></div>
-        {getView(tab)}
-    </>
+        <div className="flex-2"><h1 className="font-bold text-4xl">{summary.title}</h1>
+            <div className="flex flex-row">
+                <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
+                <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
+            </div>
+            <div className="h-4"></div>
+            {getView(activeTab)}</div>
+    </div>
 }
 
 function getLanguageFromCode(code: string) {
