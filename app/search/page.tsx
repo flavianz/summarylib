@@ -11,6 +11,10 @@ export default async function SearchPage({searchParams}: {
         return <div>Invalid search</div>;
     }
     const books = await getSearchResults(search);
+    if (books.length === 0) return (
+        <div className="flex grow justify-center items-center"><p className="text-xl">No results found for
+            "{search}"</p></div>
+    )
     return <div>{books.map((book, key) => {
         return <a href={"/summary?id=" + book.id} key={key}>
             <div className="border border-gray-300 hover:shadow-sm rounded-xl p-4 m-4 hover:cursor-pointer">

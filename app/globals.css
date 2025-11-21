@@ -32,3 +32,18 @@ body {
 main {
     font-family: "Times New Roman", "ui-serif", serif;
 }
+
+.loader {
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 0 #6cc18e44;
+    animation: l1 1s infinite;
+}
+
+@keyframes l1 {
+    100% {
+        box-shadow: 0 0 0 30px #6cc18e00;
+    }
+}
