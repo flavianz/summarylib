@@ -4,6 +4,7 @@ import React from "react";
 
 import AdBanner from "@/components/AdBanner";
 
+
 export default function SummaryLayout({children}: { children: React.ReactNode }) {
     return <div className="flex flex-col grow">
         <div className="flex flex-row justify-center">

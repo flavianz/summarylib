@@ -1,5 +1,10 @@
 import React from "react";
 import SearchInput from "../SearchInput";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "SummaryLib | Search",
+};
 
 export default function SearchLayout({
                                          children,

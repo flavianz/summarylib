@@ -1,5 +1,10 @@
 import {getSummaryById, getSummaryByUuidAndLang} from "@/lib/queries";
 import SummaryView from "@/app/summary/[id]/SummaryView";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "SummaryLib | Summary",
+};
 
 export default async function Summary({params}: { params: Promise<{ id: string }> }) {
     const idString = (await params).id;
