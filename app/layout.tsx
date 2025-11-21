@@ -27,17 +27,23 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <head><AdSense pId={"1921734779513180"}/></head>
-        <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
-        >
-        <div className={"flex flex-row justify-between"}>
-            <p className="font-serif">SummaryLib</p>
-            <div><p>Search</p></div>
-            <div><Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/></div>
-        </div>
-        <div className="flex">{children}</div>
-        </body>
+            <head>
+                <AdSense pId={"1921734779513180"}/>
+            </head>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
+            >
+                <div className={"flex flex-row justify-between"}>
+                    <p className="font-serif">SummaryLib</p>
+                    <div>
+                        <p>Search</p>
+                    </div>
+                    <div>
+                        <Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/>
+                    </div>
+                </div>
+                <div className="flex-1 h-[100%] flex w-screen">{children}</div>
+            </body>
         </html>
     );
 }
