@@ -1,19 +1,8 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Image from "next/image";
 import AdSense from "@/components/AdSense";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -43,7 +32,7 @@ export default function RootLayout({
                     <Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/>
                 </div>
             </div>
-            <div className="grow flex">{children}</div>
+            <div className="grow flex ">{children}</div>
         </div>
 
         </body>

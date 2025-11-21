@@ -1,8 +1,6 @@
 import {prisma} from "@/lib/prisma";
-import {wait} from "next/dist/lib/wait";
 
 export async function getSearchResults(query: string): Promise<SearchResults> {
-    await wait(10000);
     return prisma.$queryRaw`
         SELECT id, book_id, title, author, summary, "bookLanguage", "summaryLanguage"
         FROM "Book"
