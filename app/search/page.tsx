@@ -16,7 +16,7 @@ export default async function SearchPage({searchParams}: {
             "{search}"</p></div>
     )
     return <div>{books.map((book, key) => {
-        return <a href={"/summary?id=" + book.id} key={key}>
+        return <a href={"/summary/" + book.id} key={key}>
             <div className="border border-gray-300 hover:shadow-sm rounded-xl p-4 m-4 hover:cursor-pointer">
                 <div className="flex flex-row justify-between">
                     <div className="flex flex-row items-end">

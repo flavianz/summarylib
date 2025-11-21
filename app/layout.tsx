@@ -1,8 +1,10 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
-import Image from "next/image";
+
 import AdSense from "@/components/AdSense";
+import Wordmark from "@/app/Wordmark";
+
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -18,19 +20,14 @@ export default function RootLayout({
         <html lang="en">
         <head>
             <AdSense pId={"1921734779513180"}/>
+            <title>SummaryLib</title>
         </head>
         <body
 
         >
         <div className={`h-screen flex flex-col `}>
             <div className={"flex flex-row justify-between"}>
-                <p className="font-serif">SummaryLib</p>
-                <div>
-                    <p>Search</p>
-                </div>
-                <div>
-                    <Image src="/vercel.svg" alt="Dummy img" width={50} height={50}/>
-                </div>
+                <Wordmark/>
             </div>
             <div className="grow flex ">{children}</div>
         </div>

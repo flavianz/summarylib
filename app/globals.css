@@ -29,10 +29,6 @@ body {
     color: var(--foreground);
 }
 
-main {
-    font-family: "Times New Roman", "ui-serif", serif;
-}
-
 .loader {
     width: 20px;
     aspect-ratio: 1;
