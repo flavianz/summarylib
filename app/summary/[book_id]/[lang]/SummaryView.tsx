@@ -64,7 +64,7 @@ export default function SummaryView({summary}: {
             <h4 className="font-bold text-lg ml-8 mr-5 mt-10 mb-5">Available Languages</h4>
             {
                 ["en", "de", "fr"].map((langCode, key) => {
-                    return <button key={key} onClick={() => router.push(`/summary/${summary.book_id}.${langCode}`)}
+                    return <button key={key} onClick={() => router.push(`/summary/${summary.book_id}/${langCode}`)}
                                    className={"hover:cursor-pointer p-2 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (summary.summaryLanguage === langCode ? " bg-[#2b78491A]" : "")}>
                         <div className="flex-1 flex flex-row justify-start">
                             <p className="ml-4">{getLanguageFromCode(langCode)}</p>

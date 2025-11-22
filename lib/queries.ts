@@ -2,7 +2,7 @@ import {prisma} from "@/lib/prisma";
 
 export async function getSearchResults(query: string): Promise<SearchResults> {
     return prisma.$queryRaw`
-        SELECT id, book_id, title, author, summary, "bookLanguage", "summaryLanguage"
+        SELECT book_id, title, author, summary, "bookLanguage", "summaryLanguage"
         FROM "Book"
         WHERE title % ${query}
            OR author % ${query}

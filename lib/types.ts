@@ -1,6 +1,5 @@
 interface SearchResult {
-    id: number;
-    bookId: string;
+    book_id: string;
     title: string;
     author: string;
     summary: string;
