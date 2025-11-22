@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import bookmarkIcon from "@/public/bookmark.svg";
+import bookmarkIcon from "@/public/bookmark-filled-primary.svg";
 
 export default function BookmarksPageButton() {
     return <a href="/bookmarks"

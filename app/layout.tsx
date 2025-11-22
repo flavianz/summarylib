@@ -19,14 +19,16 @@ export default function RootLayout({
     return (
         <html lang="en">
         <head>
-            <AdSense pId={"1921734779513180"}/>
+            {/*<AdSense pId={"1921734779513180"}/>*/}
             <title>SummaryLib</title>
         </head>
-        <body>
+        <body
+
+        >
         <div className={`h-screen flex flex-col`}>
             <div className={"flex flex-row justify-between py-3 px-1 items-center"}>
                 <Wordmark/>
-                <div className="w-[40%] "><SearchInput/></div>
+                <div className="w-[40%]"><SearchInput isNavBar={true}/></div>
                 <BookmarksPageButton/>
             </div>
             <div className="grow flex min-h-0">{children}</div>

@@ -11,7 +11,7 @@ export default function SummaryLayout({children}: { children: React.ReactNode })
                 {children}
             </div>
             <div className={"flex-1 flex-shrink-0"}>
-                <AdBanner dataAdSlot={"ca-pub-1921734779513180"} dataAdFormat={"vertical"}
+                <AdBanner dataAdFormat={"vertical"}
                           dataFullWidthResponsive={true}/>
             </div>
         </div>

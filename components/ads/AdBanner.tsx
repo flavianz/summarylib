@@ -2,12 +2,11 @@
 import {useEffect} from "react";
 
 type AdBannerTypes = {
-    dataAdSlot: string;
     dataAdFormat: string;
     dataFullWidthResponsive: boolean;
 };
 
-export default function AdBanner({dataAdSlot, dataAdFormat, dataFullWidthResponsive}: AdBannerTypes) {
+export default function AdBanner({dataAdFormat, dataFullWidthResponsive}: AdBannerTypes) {
 
     useEffect(() => {
         try {
@@ -19,10 +18,10 @@ export default function AdBanner({dataAdSlot, dataAdFormat, dataFullWidthRespons
 
     return <ins className="adsbygoogle"
                 style={{
-                    display: "block",
+                    display: "block-inline",
                 }}
                 data-ad-client="ca-pub-1921734779513180"
-                data-ad-slot={dataAdSlot}
+                data-ad-slot="3414954255"
                 data-ad-format={dataAdFormat}
                 data-full-width-responsive={dataFullWidthResponsive.toString()}>
     </ins>;

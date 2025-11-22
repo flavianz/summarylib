@@ -1,6 +1,4 @@
-import BookmarkButton from "@/components/BookmarkButton";
 import {getSearchResults} from "@/lib/queries";
-import {getBookmarks} from "@/lib/bookmarks";
 import SearchResult from "@/components/SearchResult";
 
 export default async function SearchPage({searchParams}: {
@@ -20,6 +18,6 @@ export default async function SearchPage({searchParams}: {
     )
 
     return <div>{books.map((book, key) => {
-        return <SearchResult book={book} key={key}/>
+        return <SearchResult book={book} key={key} subkey={0}/>
     })}</div>
 }

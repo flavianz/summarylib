@@ -1,6 +1,6 @@
 import React from "react";
-import SearchInput from "@/components/SearchInput";
 import type {Metadata} from "next";
+import AdBanner from "@/components/ads/AdBanner";
 
 export const metadata: Metadata = {
     title: "SummaryLib | Search",
@@ -14,9 +14,10 @@ export default function SearchLayout({
     return (
         <div className={"grow flex flex-col"}>
             <div className={"grow flex flex-row  mt-10 justify-center"}>
-                <div className={"flex-1"}>Filter</div>
+                <div className={"flex-1"}></div>
                 <div className={"flex-2 flex"}>{children}</div>
-                <div className={"flex-1 "}>Adsss</div>
+                <div className={"flex-1 "}><AdBanner dataAdFormat={"vertical"}
+                                                     dataFullWidthResponsive={false}/></div>
             </div>
         </div>
     );
