@@ -49,7 +49,7 @@ export default function SummaryView({summary}: {
         }
     }
 
-    return <div className="flex flex-row">
+    return <div className="flex flex-row min-h-0 w-full">
         <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5"}>
             {
                 [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]].map(([tab, tabName, icon], key) => {
@@ -74,8 +74,8 @@ export default function SummaryView({summary}: {
                 })
             }
         </div>
-        <div className="flex-2">
-            <div className="flex flex-row justify-between items-center">
+        <div className="flex-2 flex flex-col min-h-0">
+            <div className="flex flex-row justify-between items-center flex-shrink-0">
                 <div><h1 className="font-bold text-4xl">{summary.title}</h1>
                     <div className="flex flex-row">
                         <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
@@ -95,8 +95,10 @@ export default function SummaryView({summary}: {
                     </div>
                 </div>
             </div>
-            <div className="h-4"></div>
-            {getView(activeTab)}
+            <div className="h-4 flex-shrink-0"></div>
+            <div className="overflow-auto min-h-0 grow pr-2 no-scrollbar">
+                <div className="pb-8">{getView(activeTab)}</div>
+            </div>
         </div>
     </div>
 }

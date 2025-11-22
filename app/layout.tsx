@@ -5,6 +5,7 @@ import React from "react";
 import AdSense from "@/components/ads/AdSense";
 import Wordmark from "@/components/Wordmark";
 import BookmarksPageButton from "@/components/BookmarksPageButton";
+import SearchInput from "@/components/SearchInput";
 
 export const metadata: Metadata = {
     title: "SummaryLib | Home",
@@ -22,14 +23,15 @@ export default function RootLayout({
             <title>SummaryLib</title>
         </head>
         <body
-
+            
         >
-        <div className={`h-screen flex flex-col `}>
-            <div className={"flex flex-row justify-between"}>
+        <div className={`h-screen flex flex-col`}>
+            <div className={"flex flex-row justify-between py-3 px-1 items-center"}>
                 <Wordmark/>
+                <div className="w-[40%] "><SearchInput/></div>
                 <BookmarksPageButton/>
             </div>
-            <div className="grow flex ">{children}</div>
+            <div className="grow flex min-h-0">{children}</div>
         </div>
 
         </body>
