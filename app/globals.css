@@ -42,16 +42,3 @@ body {
         box-shadow: 0 0 0 30px #6cc18e00;
     }
 }
-
-
-@layer utilities {
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-}
-
