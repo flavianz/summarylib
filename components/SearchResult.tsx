@@ -3,9 +3,9 @@
 import BookmarkButton from "@/components/BookmarkButton";
 import {useRouter} from "next/navigation";
 
-export default function SearchResult({book, key}: { book: SearchResult; key: number }) {
+export default function SearchResult({book, subkey}: { book: SearchResult, subkey: number }) {
     const router = useRouter();
-    return <div onClick={() => router.push(`/summary/${book.book_id}/${book.summaryLanguage}`)} key={key}>
+    return <div onClick={() => router.push(`/summary/${book.book_id}/${book.summaryLanguage}`)} key={subkey}>
         <div className="border border-gray-300 hover:shadow-sm rounded-xl p-4 m-4 hover:cursor-pointer">
             <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row items-end">

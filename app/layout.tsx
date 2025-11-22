@@ -22,9 +22,7 @@ export default function RootLayout({
             <AdSense pId={"1921734779513180"}/>
             <title>SummaryLib</title>
         </head>
-        <body
-            
-        >
+        <body>
         <div className={`h-screen flex flex-col`}>
             <div className={"flex flex-row justify-between py-3 px-1 items-center"}>
                 <Wordmark/>
