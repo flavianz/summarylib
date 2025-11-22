@@ -12,8 +12,8 @@ export default async function Summary({params}: { params: Promise<{ book_id: str
     if (!book_id || !lang) return <div>No book id or language provided</div>;
 
     let summary = await getSummaryByUuidAndLang(book_id, lang);
-
     if (!summary) return <div>No book found with matching book id and language</div>;
+
     return <SummaryView summary={summary}/>;
 }
 

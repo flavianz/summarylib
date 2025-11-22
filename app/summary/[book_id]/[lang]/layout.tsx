@@ -1,8 +1,8 @@
 "use client"
-import SearchInput from "@/app/SearchInput";
+import SearchInput from "@/components/SearchInput";
 import React from "react";
 
-import AdBanner from "@/components/AdBanner";
+import AdBanner from "@/components/ads/AdBanner";
 
 
 export default function SummaryLayout({children}: { children: React.ReactNode }) {

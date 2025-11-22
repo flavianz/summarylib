@@ -1,5 +1,5 @@
 import React from "react";
-import SearchInput from "../SearchInput";
+import SearchInput from "@/components/SearchInput";
 import type {Metadata} from "next";
 
 export const metadata: Metadata = {

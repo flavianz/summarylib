@@ -7,6 +7,7 @@ import analysisIcon from "@/public/analysis.svg";
 import chaptersIcon from "@/public/chapters.svg";
 import shareIcon from "@/public/share.svg";
 import {useRouter} from "next/navigation";
+import BookmarkButton from "@/components/BookmarkButton";
 
 export default function SummaryView({summary}: {
     summary: ({
@@ -81,14 +82,17 @@ export default function SummaryView({summary}: {
                         <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
                     </div>
                 </div>
-                <div
-                    className="hover:cursor-pointer hover:bg-[#2b78491A] rounded-3xl place-items-center w-[36px] h-[36px] flex justify-center items-center"
-                    onClick={() => navigator.clipboard.writeText(window.location.href)}>
-                    <Image
-                        src={shareIcon} alt={"share"}
-                        width={22}
-                        height={22}
-                    />
+                <div className="flex items-center gap-3">
+                    <BookmarkButton bookmark={{book_id: summary.book_id, lang: summary.summaryLanguage}}/>
+                    <div
+                        className="hover:cursor-pointer hover:bg-[#2b78491A] rounded-3xl place-items-center w-[36px] h-[36px] flex justify-center items-center"
+                        onClick={() => navigator.clipboard.writeText(window.location.href)}>
+                        <Image
+                            src={shareIcon} alt={"share"}
+                            width={22}
+                            height={22}
+                        />
+                    </div>
                 </div>
             </div>
             <div className="h-4"></div>

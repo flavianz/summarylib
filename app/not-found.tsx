@@ -1,12 +1,12 @@
 import SearchInput from "@/components/SearchInput";
 import React from "react";
 
-export default function Home() {
+export default function NotFound() {
     return (
         <div className={"flex flex-1 flex-col justify-center items-center w-screen"}>
-            <h1 className="font-bold text-5xl mb-5"><span className="text-[var(--primary)]">Thousands</span> of Books
+            <h1 className="font-bold text-5xl mb-5"><span className="text-[var(--primary)]">404</span> - Page Not Found
             </h1>
-            <h3 className="text-gray-600 text-lg mb-10">Analyzed and Summarized, Chapter by Chapter</h3>
+            <h3 className="text-gray-600 text-lg mb-10">This page does not exist :(</h3>
             <div className="w-[40%] "><SearchInput/></div>
         </div>
     );

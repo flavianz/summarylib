@@ -2,9 +2,9 @@ import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
 
-import AdSense from "@/components/AdSense";
-import Wordmark from "@/app/Wordmark";
-
+import AdSense from "@/components/ads/AdSense";
+import Wordmark from "@/components/Wordmark";
+import BookmarksPageButton from "@/components/BookmarksPageButton";
 
 export const metadata: Metadata = {
     title: "SummaryLib | Home",
@@ -27,6 +27,7 @@ export default function RootLayout({
         <div className={`h-screen flex flex-col `}>
             <div className={"flex flex-row justify-between"}>
                 <Wordmark/>
+                <BookmarksPageButton/>
             </div>
             <div className="grow flex ">{children}</div>
         </div>
