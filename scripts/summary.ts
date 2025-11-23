@@ -31,7 +31,7 @@ const ai = new GoogleGenAI({apiKey: process.env.GENAI_API_KEY});
 const chapterSummarySchema = z.object({
     number: z.number().describe("The number of the chapter (starting at 1)."),
     name: z.string().describe("The name of the chapter."),
-    summary: z.string().describe("A detailed summary of the chapter.")
+    summary: z.string().describe("A summary of the chapter.")
 });
 
 const bookSummarySchema = z.object({
@@ -39,7 +39,7 @@ const bookSummarySchema = z.object({
     author: z.string().describe("The author of the book."),
     summary: z.string().describe("The summary should be about 500 - 750 words, depending on the length and content of the book. Insert line breaks where they fit to make it more readable. It should not contain any analysis or other thoughts, simply the plot."),
     analysis: z.string().describe("Give a brief analysis of the themes and other literary analysis"),
-    chapters: z.array(chapterSummarySchema).describe("The chapters of the book. There should not be more than 50 items. If there are more than 50, start summarizing them in small batches.")
+    chapters: z.array(chapterSummarySchema).describe("The chapters of the book. If there are many chapters (e.g. > 30), make the summary shorter and include only the most important information. else make them more detailed.")
 });
 
 export const bookSchema = z.object({
@@ -61,11 +61,16 @@ export async function generateSummary(content: string) {
             responseJsonSchema: zodToJsonSchema(bookSchema),
         },
     });
-    const book: Book = JSON.parse(response.text ?? "{}") as Book;
     const uuid = uuidv4();
+    let book: Book;
+    try {
+        book = JSON.parse(response.text ?? "{}") as Book;
+    } catch (e) {
+        fs.writeFileSync(`./book_backups/corrupt-${uuid}.json`, content);
+        throw e;
+    }
     try {
         fs.writeFileSync(`./book_backups/${book.en.title}-${uuid}.json`, content);
-
     } catch (err) {
         console.error(err);
     }
