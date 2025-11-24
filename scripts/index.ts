@@ -7,7 +7,7 @@ import {getJsonBackupBook} from "@/scripts/fromJsonBackup";
 
 const prisma = new PrismaClient()
 
-let ints = [730, 6498, 5322, 34811, 12108, 6079, 69944, 2054, 8126, 74008, 35312, 58238, 2413, 5711, 135, 64317, 1342, 19942, 9070, 2413, 798];
+let ints = [24571, 17161, 50285, 47406, 35312, 38126, 29376, 21593, 35328, 2403, 34222, 49908, 48888, 39247, 7204, 36227, 56156];
 
 async function main() {
     //const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");

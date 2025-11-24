@@ -36,6 +36,7 @@ export default function SummaryView({summary}: {
 
     function getView(tab: string) {
         if (tab === "chapters") {
+            summary.chapters.sort((a, b) => a.number - b.number);
             return <div>{summary.chapters.map((chapter, key) => {
                 return <div key={key} className="pb-6">
                     <h2 className="font-semibold text-xl text-[var(--dark)]">{chapter.number} {chapter.name}</h2>
