@@ -7,14 +7,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     return books.map((book) => ({
-        url: `https://summarylib.flavianz.ch/summary/${book.book_id}/${book.summaryLanguage}`,
+        url: `https://summarylib.org/summary/${book.book_id}/${book.summaryLanguage}`,
         lastModified: book.uploadedAt,
         changeFrequency: "weekly",
         alternates: {
             languages: {
-                en: `https://summarylib.flavianz.ch/summary/${book.book_id}/en`,
-                fr: `https://summarylib.flavianz.ch/summary/${book.book_id}/fr`,
-                de: `https://summarylib.flavianz.ch/summary/${book.book_id}/de`,
+                en: `https://summarylib.org/summary/${book.book_id}/en`,
+                fr: `https://summarylib.org/summary/${book.book_id}/fr`,
+                de: `https://summarylib.org/summary/${book.book_id}/de`,
             },
         },
     }));
