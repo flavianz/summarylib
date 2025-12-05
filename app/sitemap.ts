@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return books.map((book) => ({
         url: `https://summarylib.flavianz.ch/summary/${book.book_id}/${book.summaryLanguage}`,
         lastModified: book.uploadedAt,
-        changeFrequency: "monthly",
+        changeFrequency: "weekly",
         alternates: {
             languages: {
                 en: `https://summarylib.flavianz.ch/summary/${book.book_id}/en`,

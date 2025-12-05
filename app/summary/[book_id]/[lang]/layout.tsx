@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ book_id: 
     switch (lang) {
         case "en":
         default: {
-            title = `${book.title}: Chapter-by-Chapter Summaries and Analysis`;
+            title = `${book.title}: Chapter Summaries and Analysis`;
             break;
         }
         case "de": {
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ book_id: 
             break;
         }
         case "fr": {
-            title = `${book.title}: résumé et analyse chapitre par chapitre`;
+            title = `${book.title}: résumé par chapitre et analyse`;
             break;
         }
     }
