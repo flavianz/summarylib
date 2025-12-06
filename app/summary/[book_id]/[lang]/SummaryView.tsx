@@ -8,6 +8,7 @@ import chaptersIcon from "@/public/chapters.svg";
 import shareIcon from "@/public/share.svg";
 import {useRouter} from "next/navigation";
 import BookmarkButton from "@/components/BookmarkButton";
+import AdBanner from "@/components/ads/AdBanner";
 
 export default function SummaryView({summary}: {
     summary: ({
@@ -96,7 +97,9 @@ export default function SummaryView({summary}: {
                     </div>
                 </div>
             </div>
-            <div className="h-4 flex-shrink-0"></div>
+            <div className="h-4 flex-shrink-0">
+                <AdBanner dataAdFormat={"vertical"} dataFullWidthResponsive={true}/>
+            </div>
             <div className="overflow-auto min-h-0 grow pr-2 no-scrollbar">
                 <div className="pb-8">{getView(activeTab)}</div>
             </div>

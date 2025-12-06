@@ -2,8 +2,6 @@ import {fetchGutenbergBooks} from "@/scripts/gutenberg";
 import {PrismaClient} from "@/generated/prisma/client";
 import {v4 as uuidv4} from 'uuid';
 import {Book, BookSummary} from "@/scripts/summary";
-import {getFileBook} from "@/scripts/fromFile";
-import {getJsonBackupBook} from "@/scripts/fromJsonBackup";
 
 const prisma = new PrismaClient()
 
