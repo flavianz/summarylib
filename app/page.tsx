@@ -1,5 +1,12 @@
 import SearchInput from "@/components/SearchInput";
 import React, {Suspense} from "react";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'SummaryLib | Chapter-Summaries & Analysis',
+    description: 'Thousands of Books - Analyzed and Summarized, Chapter by Chapter.',
+    keywords: ["summary", "book summary", "chapter summary", "chapter-by-chapter summary"]
+};
 
 export default function Home() {
     return (
