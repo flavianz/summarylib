@@ -1,14 +1,9 @@
-import type {Metadata} from "next";
 import "./globals.css";
 import React, {Suspense} from "react";
 
 import Wordmark from "@/components/Wordmark";
 import BookmarksPageButton from "@/components/BookmarksPageButton";
 import SearchInput from "@/components/SearchInput";
-
-export const metadata: Metadata = {
-    title: "SummaryLib | Home",
-};
 
 export default function RootLayout({
                                        children,
@@ -18,7 +13,6 @@ export default function RootLayout({
     return (
         <html lang="en">
         <head>
-            {/*<AdSense pId={"1921734779513180"}/>*/}
             <title>SummaryLib</title>
         </head>
         <body
