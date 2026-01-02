@@ -1,14 +1,15 @@
 import React from "react";
 
-import AdBanner from "@/components/ads/AdBanner";
 import type {Metadata} from "next";
 import {prisma} from "@/lib/prisma";
 
 
-export async function generateMetadata({ params }: { params: Promise<{ book_id: string; lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({params}: {
+    params: Promise<{ book_id: string; lang: string }>
+}): Promise<Metadata> {
     const {book_id, lang} = await params;
     const book = await prisma.book.findFirst({
-        where: { book_id: book_id, summaryLanguage: lang },
+        where: {book_id: book_id, summaryLanguage: lang},
     });
 
     if (!book) {
@@ -66,8 +67,7 @@ export default function SummaryLayout({children}: { children: React.ReactNode })
                 {children}
             </div>
             <div className={"flex-1 flex-shrink-0"}>
-                <AdBanner dataAdFormat={"vertical"}
-                          dataFullWidthResponsive={true}/>
+
             </div>
         </div>
     </div>

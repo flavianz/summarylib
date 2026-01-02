@@ -1,7 +1,6 @@
 "use client"
 import React, {useEffect, useState} from "react";
 import SearchResult from "@/components/SearchResult";
-import AdBanner from "@/components/ads/AdBanner";
 
 export default function Bookmarks() {
     const [books, setBooks] = useState<SearchResult[] | null>(null);
@@ -42,7 +41,7 @@ export default function Bookmarks() {
                     return <SearchResult book={book} subkey={key} key={key}/>
                 })}</div>
             </div>
-            <div className={"flex-1 "}><AdBanner dataAdFormat={"vertical"} dataFullWidthResponsive={false}/></div>
+            <div className={"flex-1 "}></div>
         </div>
     </div>
 }

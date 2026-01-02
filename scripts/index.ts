@@ -5,26 +5,40 @@ import {Book, BookSummary} from "@/scripts/summary";
 
 const prisma = new PrismaClient()
 
-let ints = [24571, 17161, 50285, 47406, 35312, 38126, 29376, 21593, 35328, 2403, 34222, 49908, 48888, 39247, 7204, 36227, 56156];
+let ints: number[] = [85, 90, 91, 92, 93, 94, 95, 96, 97,];
 
 async function main() {
     //const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
     //const books = getJsonBackupBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
-    let count = 1;
+
+    let count = 0;
     const retries = [];
     for (const index of ints) {
+        count++;
         try {
+            if (await exists(index.toString())) {
+                console.log(`${count}/${ints.length} Skipping (already exists)`);
+                continue
+            }
             const book = await fetchGutenbergBooks(index);
+            if (!book) {
+                continue
+            }
             await upload(book);
             console.log(`${count}/${ints.length} Uploaded ${book.en.title} by ${book.en.author} (${index})`)
         } catch (e) {
             retries.push(index);
             console.error(`Error at ${count}/${ints.length} (index ${index}): ${e}`)
         }
-        count++;
     }
     console.log("Retries: ", retries);
     console.log("Uploaded all books!");
+}
+
+async function exists(gutenbergId: string) {
+    return !!(await prisma.book.findFirst({
+        where: {gutenberg_id: gutenbergId}
+    }));
 }
 
 async function upload(book: Book) {

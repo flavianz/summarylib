@@ -6,9 +6,9 @@ import summaryIcon from "@/public/book.svg";
 import analysisIcon from "@/public/analysis.svg";
 import chaptersIcon from "@/public/chapters.svg";
 import shareIcon from "@/public/share.svg";
+import chatIcon from "@/public/chat.svg";
 import {useRouter} from "next/navigation";
 import BookmarkButton from "@/components/BookmarkButton";
-import AdBanner from "@/components/ads/AdBanner";
 
 export default function SummaryView({summary}: {
     summary: ({
@@ -54,7 +54,7 @@ export default function SummaryView({summary}: {
     return <div className="flex flex-row min-h-0 w-full">
         <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5"}>
             {
-                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]].map(([tab, tabName, icon], key) => {
+                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]/*, ["chat", "Chat with this book", chatIcon]*/].map(([tab, tabName, icon], key) => {
                     return <button key={key} onClick={() => setActiveTab(tab)}
                                    className={"hover:cursor-pointer p-4 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (tab === activeTab ? " bg-[#2b78491A]" : "")}>
                         <div className="flex-1 flex flex-row justify-start">
@@ -98,7 +98,7 @@ export default function SummaryView({summary}: {
                 </div>
             </div>
             <div className="h-4 flex-shrink-0">
-                <AdBanner dataAdFormat={"vertical"} dataFullWidthResponsive={true}/>
+
             </div>
             <div className="overflow-auto min-h-0 grow pr-2 no-scrollbar">
                 <div className="pb-8">{getView(activeTab)}</div>
