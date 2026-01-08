@@ -54,7 +54,7 @@ export default function SummaryView({summary}: {
     return <div className="flex flex-row min-h-0 w-full">
         <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5"}>
             {
-                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]/*, ["chat", "Chat with this book", chatIcon]*/].map(([tab, tabName, icon], key) => {
+                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon], ["chat", "Chat with this book", chatIcon]].map(([tab, tabName, icon], key) => {
                     return <button key={key} onClick={() => setActiveTab(tab)}
                                    className={"hover:cursor-pointer p-4 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (tab === activeTab ? " bg-[#2b78491A]" : "")}>
                         <div className="flex-1 flex flex-row justify-start">
