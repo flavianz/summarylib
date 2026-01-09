@@ -6,7 +6,6 @@ import summaryIcon from "@/public/book.svg";
 import analysisIcon from "@/public/analysis.svg";
 import chaptersIcon from "@/public/chapters.svg";
 import shareIcon from "@/public/share.svg";
-import chatIcon from "@/public/chat.svg";
 import {useRouter} from "next/navigation";
 import BookmarkButton from "@/components/BookmarkButton";
 
@@ -40,7 +39,7 @@ export default function SummaryView({summary}: {
             summary.chapters.sort((a, b) => a.number - b.number);
             return <div>{summary.chapters.map((chapter, key) => {
                 return <div key={key} className="pb-6">
-                    <h2 className="font-semibold text-xl text-[var(--dark)]">{chapter.number} {chapter.name}</h2>
+                    <h2 className="font-semibold text-xl text-(--dark)">{chapter.number} {chapter.name}</h2>
                     <p>{chapter.summary}</p>
                 </div>
             })}</div>
@@ -77,17 +76,17 @@ export default function SummaryView({summary}: {
             }
         </div>
         <div className="flex-2 flex flex-col min-h-0">
-            <div className="flex flex-row justify-between items-center flex-shrink-0">
+            <div className="flex flex-row justify-between items-center shrink-0">
                 <div><h1 className="font-bold text-4xl">{summary.title}</h1>
                     <div className="flex flex-row">
                         <p className="pr-4 text-lg text-gray-600">{summary.author}</p>
                         <p className="text-lg text-gray-600">{getLanguageFromCode(summary.bookLanguage)}</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 pr-[5vw]">
                     <BookmarkButton bookmark={{book_id: summary.book_id, lang: summary.summaryLanguage}}/>
                     <div
-                        className="hover:cursor-pointer hover:bg-[#2b78491A] rounded-3xl place-items-center w-[36px] h-[36px] flex justify-center items-center"
+                        className="hover:cursor-pointer hover:bg-[#2b78491A] rounded-3xl place-items-center w-9 h-9 flex justify-center items-center"
                         onClick={() => navigator.clipboard.writeText(window.location.href)}>
                         <Image
                             src={shareIcon} alt={"share"}
@@ -97,9 +96,7 @@ export default function SummaryView({summary}: {
                     </div>
                 </div>
             </div>
-            <div className="h-4 flex-shrink-0">
-
-            </div>
+            <div className="h-4 shrink-0"></div>
             <div className="overflow-auto min-h-0 grow pr-2 no-scrollbar">
                 <div className="pb-8">{getView(activeTab)}</div>
             </div>

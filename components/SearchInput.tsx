@@ -27,7 +27,7 @@ export default function SearchInput({isNavBar = false}: {
         <div
             className="border border-[var(--secondary)] shadow-[var(--secondary)] rounded-4xl flex justify-center pl-8 pt-2 pr-2 pb-2">
             <input type="text"
-                   className="focus:outline-none focus:ring-0 border-transparent flex-1" value={value}
+                   className="focus:outline-none focus:ring-0 border-transparent flex-1 min-w-0 mr-1" value={value}
                    onChange={(e) => setValue(e.target.value)}
                    placeholder="Search for books or authors..."
             />

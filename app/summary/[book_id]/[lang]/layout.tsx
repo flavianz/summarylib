@@ -66,9 +66,6 @@ export default function SummaryLayout({children}: { children: React.ReactNode })
             <div className={"flex-3 flex min-h-0"}>
                 {children}
             </div>
-            <div className={"flex-1 flex-shrink-0"}>
-
-            </div>
         </div>
     </div>
 }
