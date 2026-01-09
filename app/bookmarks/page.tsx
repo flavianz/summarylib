@@ -33,15 +33,13 @@ export default function Bookmarks() {
     if (books.length === 0) return <p>No books found</p>;
 
     return <div className={"grow flex flex-col"}>
-        <div className={"grow flex flex-row  mt-10 justify-center"}>
-            <div className={"flex-1"}></div>
+        <div className={"grow flex flex-row  mt-10 justify-center px-[max(calc(10vw-50px),0px)]"}>
             <div className={"flex-2"}>
-                <h1 className="text-4xl font-bold mb-5">Your Bookmarks</h1>
+                <h1 className="text-4xl font-bold mb-5 text-center">Your Bookmarks</h1>
                 <div>{books.map((book, key) => {
                     return <SearchResult book={book} subkey={key} key={key}/>
                 })}</div>
             </div>
-            <div className={"flex-1 "}></div>
         </div>
     </div>
 }

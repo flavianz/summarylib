@@ -8,8 +8,8 @@ export default function SearchResult({book, subkey}: { book: SearchResult, subke
     return <div onClick={() => router.push(`/summary/${book.book_id}/${book.summaryLanguage}`)} key={subkey}>
         <div className="border border-gray-300 hover:shadow-sm rounded-xl p-4 m-4 hover:cursor-pointer">
             <div className="flex flex-row justify-between items-center">
-                <div className="flex flex-row items-end">
-                    <h2 className="font-bold text-xl pr-4">{book.title}</h2>
+                <div className="flex flex-row items-center">
+                    <h2 className="font-bold text-xl pr-4 text">{book.title}</h2>
                     <h4 className="text-lg">{book.author}</h4>
                 </div>
                 <div className="flex items-center gap-3"><p

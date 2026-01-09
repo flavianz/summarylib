@@ -50,10 +50,12 @@ export default function SummaryView({summary}: {
         }
     }
 
-    return <div className="flex flex-row min-h-0 w-full">
-        <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5"}>
+    let tabs = [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]];
+
+    return <div className="flex flex-row min-h-0 w-full not-landscape:px-4">
+        <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5 not-landscape:hidden"}>
             {
-                [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]/*, ["chat", "Chat with this book", chatIcon]*/].map(([tab, tabName, icon], key) => {
+                tabs.map(([tab, tabName, icon], key) => {
                     return <button key={key} onClick={() => setActiveTab(tab)}
                                    className={"hover:cursor-pointer p-4 hover:bg-[#2b78491A] rounded-xl ml-5 mr-10" + (tab === activeTab ? " bg-[#2b78491A]" : "")}>
                         <div className="flex-1 flex flex-row justify-start">
@@ -76,6 +78,19 @@ export default function SummaryView({summary}: {
             }
         </div>
         <div className="flex-2 flex flex-col min-h-0">
+            <div className="landscape:hidden w-full my-4">
+                <div className="flex flex-row w-full">{
+                    tabs.map(([tab, tabName, icon], key) => {
+                        return <button key={key} onClick={() => setActiveTab(tab)}
+                                       className={"hover:cursor-pointer p-4 flex border-[#2b7849] hover:border-b-4 rounded-t-xl flex-1 " + (tab === activeTab ? " bg-[#2b78491A] border-b-4" : "")}>
+                            <div className="flex-1 flex flex-row justify-center items-center gap-2">
+                                <Image src={icon} alt={"icon"} width={24} height={24}/>
+                                <p>{tabName}</p>
+                            </div>
+                        </button>
+                    })
+                }</div>
+            </div>
             <div className="flex flex-row justify-between items-center shrink-0">
                 <div><h1 className="font-bold text-4xl">{summary.title}</h1>
                     <div className="flex flex-row">
