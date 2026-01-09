@@ -38,9 +38,9 @@ export default function SummaryView({summary}: {
         if (tab === "chapters") {
             summary.chapters.sort((a, b) => a.number - b.number);
             return <div>{summary.chapters.map((chapter, key) => {
-                return <div key={key} className="pb-6">
+                return <div key={key} className="pb-6 ">
                     <h2 className="font-semibold text-xl text-(--dark)">{chapter.number} {chapter.name}</h2>
-                    <p>{chapter.summary}</p>
+                    <p className={"whitespace-pre-wrap text-lg"}>{chapter.summary}</p>
                 </div>
             })}</div>
         } else if (tab === "analysis") {
@@ -52,8 +52,8 @@ export default function SummaryView({summary}: {
 
     let tabs = [["summary", "Summary", summaryIcon], ["analysis", "Analysis", analysisIcon], ["chapters", "Chapters", chaptersIcon]];
 
-    return <div className="flex flex-row min-h-0 w-full not-landscape:px-4">
-        <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5 not-landscape:hidden"}>
+    return <div className="flex flex-row min-h-0 w-full not-landscape:px-4 landscape:pr-[10vw] landscape:pt-5">
+        <div className={"flex-1 flex flex-col items-stretch pt-10 pb-10 gap-y-1.5 not-landscape:hidden max-w-100"}>
             {
                 tabs.map(([tab, tabName, icon], key) => {
                     return <button key={key} onClick={() => setActiveTab(tab)}

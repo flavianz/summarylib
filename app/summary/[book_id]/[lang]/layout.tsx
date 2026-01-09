@@ -63,7 +63,7 @@ export async function generateMetadata({params}: {
 export default function SummaryLayout({children}: { children: React.ReactNode }) {
     return <div className="flex flex-col grow min-h-0">
         <div className={"flex flex-row mt-5d grow min-h-0"}>
-            <div className={"flex-3 flex min-h-0"}>
+            <div className={"flex-3 flex min-h-0 "}>
                 {children}
             </div>
         </div>
