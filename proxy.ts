@@ -2,7 +2,7 @@ import {NextRequest, NextResponse} from "next/server";
 
 const CANONICAL_HOST = 'summarylib.org';
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
     const host = req.headers.get('host');
 
     if (host && host !== CANONICAL_HOST) {
