@@ -2,16 +2,17 @@ import {fetchGutenbergBooks} from "@/scripts/gutenberg";
 import {PrismaClient} from "@/generated/prisma/client";
 import {v4 as uuidv4} from 'uuid';
 import {Book, BookSummary} from "@/scripts/summary";
+import {getFileBook} from "@/scripts/fromFile";
 
 const prisma = new PrismaClient()
 
 let ints: number[] = [85, 90, 91, 92, 93, 94, 95, 96, 97,];
 
 async function main() {
-    //const books = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
+    const book = await getFileBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\letrnger.txt");
     //const books = getJsonBackupBook("C:\\Users\\flavi\\Documents\\WebProjects\\summarylib\\scripts\\air.txt");
 
-    let count = 0;
+    /*let count = 0;
     const retries = [];
     for (const index of ints) {
         count++;
@@ -32,7 +33,9 @@ async function main() {
         }
     }
     console.log("Retries: ", retries);
-    console.log("Uploaded all books!");
+    console.log("Uploaded all books!");*/
+    await upload(book);
+    console.log("Uploaded book!");
 }
 
 async function exists(gutenbergId: string) {

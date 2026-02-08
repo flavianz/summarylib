@@ -4,5 +4,5 @@ import * as fs from "node:fs";
 export async function getFileBook(path: string) {
     const data = fs.readFileSync(path, 'utf8');
 
-    return [await generateSummary(data)];
+    return await generateSummary(data);
 }
